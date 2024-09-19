@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "09f12a4b-64de-49f1-bc3d-7d01aecc3b20",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 600,
+  "height": 600,
+  "platformSettings": {},
+  "subMetas": {
+    "七昧真火": {
+      "ver": "1.0.6",
+      "uuid": "17d4f528-5386-4a88-ac5f-f136205e3307",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "09f12a4b-64de-49f1-bc3d-7d01aecc3b20",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 0,
+      "width": 598,
+      "height": 600,
+      "rawWidth": 600,
+      "rawHeight": 600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

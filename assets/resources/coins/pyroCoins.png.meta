@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c2741933-38a0-4994-8a52-fa003030f364",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1024,
+  "height": 1024,
+  "platformSettings": {},
+  "subMetas": {
+    "pyroCoins": {
+      "ver": "1.0.6",
+      "uuid": "26c9c1d4-fef3-4a50-80bb-fcb36bdc3e3f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c2741933-38a0-4994-8a52-fa003030f364",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 10,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1024,
+      "height": 1004,
+      "rawWidth": 1024,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

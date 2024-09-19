@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "987c6364-9301-4839-b751-4b75021a79be",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 600,
+  "height": 800,
+  "platformSettings": {},
+  "subMetas": {
+    "奇门logo": {
+      "ver": "1.0.6",
+      "uuid": "f230172e-693d-47e3-b261-7d3bf96dbf77",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "987c6364-9301-4839-b751-4b75021a79be",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 10.5,
+      "offsetY": 27.5,
+      "trimX": 24,
+      "trimY": 0,
+      "width": 573,
+      "height": 745,
+      "rawWidth": 600,
+      "rawHeight": 800,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

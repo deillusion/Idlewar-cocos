@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "8c581f65-ff7d-4ce8-b567-d2b2bcc02ea8",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1024,
+  "height": 1024,
+  "platformSettings": {},
+  "subMetas": {
+    "auroCoins": {
+      "ver": "1.0.6",
+      "uuid": "ab4d19e4-a1f9-4d24-8a00-8cae67dedaa6",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "8c581f65-ff7d-4ce8-b567-d2b2bcc02ea8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -7,
+      "trimX": 0,
+      "trimY": 14,
+      "width": 1024,
+      "height": 1010,
+      "rawWidth": 1024,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
