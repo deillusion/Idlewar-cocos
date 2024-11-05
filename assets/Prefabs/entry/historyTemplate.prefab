@@ -1134,6 +1134,9 @@
     "itemIcon": {
       "__uuid__": "57b933ee-de38-4b19-84a0-ab2aa394e0f5"
     },
+    "historyDate": {
+      "__id__": 23
+    },
     "isEnd": true,
     "baseInfo": null,
     "_id": ""

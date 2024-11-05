@@ -94,8 +94,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -2.9,
-        462,
+        0,
+        0,
         0,
         0,
         0,
@@ -2814,7 +2814,9 @@
       "__id__": 1
     },
     "_enabled": true,
-    "journeyLevel": null,
+    "journeyLevel": {
+      "__id__": 4
+    },
     "rank1": {
       "__id__": 12
     },
@@ -2842,8 +2844,12 @@
     "power3": {
       "__id__": 57
     },
-    "dateLabel": null,
-    "itemIcon": null,
+    "dateLabel": {
+      "__id__": 69
+    },
+    "itemIcon": {
+      "__uuid__": "57b933ee-de38-4b19-84a0-ab2aa394e0f5"
+    },
     "baseInfo": null,
     "_id": ""
   },

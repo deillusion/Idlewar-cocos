@@ -13096,7 +13096,7 @@
         "__id__": 473
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 481
@@ -19750,6 +19750,7 @@
     "records": {
       "__id__": 340
     },
+    "games": null,
     "createJourneyPage": {
       "__id__": 355
     },
