@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "966dcff6-bf22-455b-92e0-684d366d2f70",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 720,
+  "height": 1680,
+  "platformSettings": {},
+  "subMetas": {
+    "清沐瑶音": {
+      "ver": "1.0.6",
+      "uuid": "3d8f3a31-4f4a-47ff-b0c3-1f0edc6f072e",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "966dcff6-bf22-455b-92e0-684d366d2f70",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -31,
+      "trimX": 0,
+      "trimY": 182,
+      "width": 720,
+      "height": 1378,
+      "rawWidth": 720,
+      "rawHeight": 1680,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

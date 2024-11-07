@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "36d89c72-f828-48de-9491-ac55b293e02e",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1024,
+  "height": 1024,
+  "platformSettings": {},
+  "subMetas": {
+    "geoCoins": {
+      "ver": "1.0.6",
+      "uuid": "f032d64a-1fbb-415b-95f3-0ef216a152e7",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "36d89c72-f828-48de-9491-ac55b293e02e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -16.5,
+      "trimX": 0,
+      "trimY": 33,
+      "width": 1024,
+      "height": 991,
+      "rawWidth": 1024,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

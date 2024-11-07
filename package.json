@@ -1,0 +1,8 @@
+{
+    "dependencies": {
+      "crypto-js": "^4.2.0",
+      "heap": "^0.2.7",
+      "xjfz-journey": "file:xjfz-journey"
+    }
+  }
+  
