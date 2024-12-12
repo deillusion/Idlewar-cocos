@@ -37,9 +37,9 @@ cc.Class({
         this.nickname.getComponent('twoFontLabel').init(userInfo.nickname, {resizeIfExceed: true})
         this.icon.getComponent('icon').init(userInfo.iconUrl)
 
-        this.powerLabel.string = convertPowerString(data.power)
+        this.powerLabel.string = data.power
 
-        this.growingLabel.string = getPercentage(data.grow-1)
+        this.growingLabel.string = getPercentage(data.grow)
         this.damageLabel.string = data.damage
         this.scopeLabel.string = data.scope
         this.aspdLabel.string = data.aspd
@@ -136,5 +136,6 @@ function addBlockInputComponent(node) {
 }
 const gameGlobals = require('../battleMiddleWare/gameGlobals');
 var { typeDict, convertPowerString, refreshPage, constant } = require('../battleMiddleWare/gameUtils');
-const { COIN_KEYS } = require('../xjfz-journey/classic-v0.0.1/main/objects/Coin');const { getPercentage } = require('../xjfz-journey/classic-v0.0.1/main/utils/numberUtils');
+const { COIN_KEYS } = require('../xjfz-journey/classic-latest/main/objects/Coin');
+const { getPercentage } = require('../xjfz-journey/classic-latest/main/utils/numberUtils');
 

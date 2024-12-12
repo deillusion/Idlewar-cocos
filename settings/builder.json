@@ -16,7 +16,7 @@
   "mainIsRemote": false,
   "optimizeHotUpdate": false,
   "md5Cache": true,
-  "nativeMd5Cache": true,
+  "nativeMd5Cache": false,
   "encryptJs": false,
   "xxteaKey": "1f35a2ea-64b6-49",
   "zipCompressJs": true,

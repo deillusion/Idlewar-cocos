@@ -5,11 +5,14 @@ cc.Class({
         id:0,
         type: "detail",
         iconSF: cc.Sprite,
-        detail: cc.Prefab
+        deckDetail: cc.Prefab,
+        petDetail: cc.Prefab,
+        _data: null
     },
-    init:function(id, type){
+    init:function(id, type, data){
         this.id=id;
         this.type = type
+        this._data = data
         var address=pet()[id].iconUrl.replace("pets", "petIcon");
         var self = this;
         cc.loader.loadRes(address, cc.SpriteFrame, function (err, spriteFrame) {
@@ -21,11 +24,13 @@ cc.Class({
     },
     seeDetailBtn(){
         if (this.type == "detail"){
-            let detail = cc.instantiate(this.detail)
+            let detail = cc.instantiate(this.deckDetail)
             detail.getComponent('petDetails').init(this.id);
             root().addChild(detail)
         } else {
-            let detail = cc.instantiate(this.detail)
+            let detail = cc.instantiate(this.petDetail)
+            detail.getComponent('creatureDetails').init(this._data)
+            root().addChild(detail)
         }
     },
 });

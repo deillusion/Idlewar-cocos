@@ -129,5 +129,5 @@ function formatLogContent(content: string) {
 import { typeDict } from '../battleMiddleWare/gameUtils.js';
 import gameGlobals = require('../battleMiddleWare/gameGlobals.js')
 import { JOURNEY_START_TIME, ONE_JOURNEY_DAY, ONE_NATURAL_DAY } from '../Constants';
-import { Log } from "../xjfz-journey/classic-v0.0.1/main/loggers/baseLoggers";
+import { Log } from "../xjfz-journey/classic-latest/main/loggers/baseLoggers";
 import { fillWithZero } from "../otherComponents/commonUtils"

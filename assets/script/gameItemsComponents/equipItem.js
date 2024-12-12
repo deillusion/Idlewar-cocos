@@ -37,11 +37,20 @@ cc.Class({
         }
     },
     refresh(){
-        let data = checkEquip(this.id)
+        let player = getCurrPlayer(), data = player.findEquip(this.id)
+        //console.log(this.id, player.isForgingEquip(this.id))
         if(data){
+            //console.log(this.id, "show data")
             this.cost.node.active=true;
-            this.cost.string="Lv"+data.level;
+            this.cost.string="Lv."+data.level;
             this.node.zIndex=this.id
+        } else if(player.isForgingEquip(this.id)) {
+            //console.log(this.id, "show forging")
+            this.cost.node.active=true;
+            this.cost.string="锻造中";
+            this.node.zIndex=this.id
+            //setTimeout(()=>console.log(this.node), 1000)
+            
         } else {
             this.cost.node.active=false;
             this.cost.string=""

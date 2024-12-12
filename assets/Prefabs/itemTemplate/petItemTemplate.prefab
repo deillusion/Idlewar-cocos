@@ -505,9 +505,13 @@
     "iconSF": {
       "__id__": 6
     },
-    "detail": {
+    "deckDetail": {
       "__uuid__": "a1042514-5490-49ef-9157-f782d092a3fd"
     },
+    "petDetail": {
+      "__uuid__": "16dc5133-a3b6-43df-9032-760fa81076c6"
+    },
+    "_data": null,
     "_id": ""
   },
   {

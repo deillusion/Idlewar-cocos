@@ -11957,7 +11957,7 @@
       "__id__": 323
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 325
@@ -12278,7 +12278,7 @@
       "__id__": 323
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 334
@@ -12843,7 +12843,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 77.84,
+      "width": 249.6,
       "height": 83.6
     },
     "_anchorPoint": {
@@ -12895,9 +12895,9 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "0%",
-    "_N$string": "0%",
-    "_fontSize": 60,
+    "_string": "检查更新...",
+    "_N$string": "检查更新...",
+    "_fontSize": 50,
     "_lineHeight": 60,
     "_enableWrapText": true,
     "_N$file": {
@@ -14039,6 +14039,13 @@
     "_progress": 0,
     "_splash": null,
     "_isLoading": false,
+    "_updating": false,
+    "_canRetry": false,
+    "_storagePath": "",
+    "_am": null,
+    "manifestUrl": {
+      "__uuid__": "00ea5eec-5708-4d00-a3be-5e9bc1dbad84"
+    },
     "_id": "b7lz93ZzBH0YAsTdUomJXc"
   },
   {

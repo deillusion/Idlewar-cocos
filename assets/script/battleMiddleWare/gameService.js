@@ -3,7 +3,7 @@ const { refreshPage, typeDict, constant } = require("./gameUtils");
 const { danMu } = require("../otherComponents/uiUtils");
 let journey = require("../xjfz-journey/index");
 const { fillWithZero } = require("../otherComponents/commonUtils");
-const { config } = require("../Globals")
+const { config } = require("../Globals");
 
 let obj={
     /**
@@ -29,10 +29,10 @@ let obj={
     makeOperation:function(instru) {
         if(global.isEntering && global.historyPosition < global.initPosition) {
             danMu("修行中不要分心推演旧事")
-            return
+            return false
         }
         let command = `${fillWithZero(global.currTime, 6)}${global.currPLayerIndex}${instru}`
-        updateGame(command)
+        let result = updateGame(command)
         console.log(global.gameObj.JSONStringify())
         global.animationPlayer = global.gameObj.animationPlayer
         if(config.playAnimation) {
@@ -47,7 +47,7 @@ let obj={
         } else {
             refreshPage()
         }
-        
+        return result
         
     },
     
@@ -65,6 +65,7 @@ let obj={
         global.gameModule = journey[version]
         global.gameRouter = global.gameModule.routers
         global.gameObj = global.gameRouter.newGame()
+        global.gameRouter.initForCocos()
         //console.log("is cocos init:", global.gameRouter.isFrontEnd.cocos)
         global.historyPosition = 0
         global.gameRecords = [global.gameObj]
@@ -87,6 +88,18 @@ let obj={
         global.gameObj.logger.data.forEach(formatLogger)
         global.logs.push(global.gameObj.logger.data)
         global.historyPosition++
+    },
+
+    resetGameGlobals: function() {
+        global.isEntering = false
+        global.isMocking = false
+        global.isTrying = false
+        global.operations = []
+        global.initPosition = -1
+        global.historyPosition = 1
+        global.gameRecords = []
+        global.logs = []
+        global.gameInfo = JSON.parse(JSON.stringify(global.gameInfo))
     }
 }
 module.exports = obj
@@ -97,9 +110,11 @@ function updateGame(command) {
     if(result!="success") {
         danMu(result)
         global.gameObj = global.gameRecords[global.historyPosition]
+        return false
     } else {
         //如果在
         if(global.historyPosition < global.initPosition) {
+            console.log('isTrying has set to true')
             global.isTrying = true
         }
         global.gameRecords.splice(global.historyPosition+1)
@@ -114,7 +129,7 @@ function updateGame(command) {
             //cc.sys.localStorage.setItem("mockHistory")
         }
         //console.log()
-        
+        return true
         
     }
 }

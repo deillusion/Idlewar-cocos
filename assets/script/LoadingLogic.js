@@ -1,5 +1,6 @@
 const { config, auth, user } = require('./Globals');
 const http = require('./http');
+const { alertError, alertComponent } = require('./otherComponents/uiUtils');
 const variables = {
     _loadedProgess: 0
 }
@@ -14,6 +15,10 @@ cc.Class({
         _progress:0.0,
         _splash:null,
         _isLoading:false,
+        _updating: false,
+        _canRetry: false,
+        _storagePath: '',
+        _am: null,
         manifestUrl: {
             type: cc.Asset,
             default: null
@@ -21,6 +26,7 @@ cc.Class({
     },
     // use this for initialization
     onLoad: function () {
+        cc.game.setFrameRate(60)
         if(!cc.sys.isNative && cc.sys.isMobile){
             var cvs = this.node.getComponent(cc.Canvas);
             cvs.fitHeight = true;
@@ -30,7 +36,6 @@ cc.Class({
         let localConfig = JSON.parse(cc.sys.localStorage.getItem("config"))
         Object.assign(config, localConfig)
         //cc.sys.localStorage.setItem("auth", JSON.stringify({userid:274,token:"kMgoQ1KnQ8CIz/cfmfhRNQ=="}))  
-        
 
         this._splash = cc.find("初始画面/logo");
         cc.find("初始画面").active = true
@@ -67,6 +72,7 @@ cc.Class({
         setTimeout(fn,33);
         setTimeout(self.loadResources, 0);    
         self.checkLoginStatus()
+        self.handleHotUpdate()
     },
 
     
@@ -89,28 +95,34 @@ cc.Class({
         files.forEach(item => cc.resources.load(item.path, item.type, function(err, res) {
             loadedNum ++;
             variables._loadedProgess = loadedNum/size
+            if(!res) return
             res.addRef()
         }))
     },
     Loading(){
         this.byteProgress.progress = 0
         var self=this;
-        var fn2=function(){
+        
+        let intervalId = setInterval(function(){
+            if(!self._canRetry) return
             let _loadedProgess = variables._loadedProgess ? variables._loadedProgess : 1
             if(!self.byteProgress) return
             let progress = self.byteProgress.progress
             if(progress >= 1) {
+                clearInterval(intervalId)
                 cc.director.loadScene(self.nextSceneName)
                 //return
             }
             if(progress < _loadedProgess && (progress < 0.9 || self.nextSceneName)) {
                 progress += 0.01
                 self.byteProgress.progress = progress;
-                self.label.string = Math.round(progress * 100) + "%"
+                self.label.string = `加载中 ${Math.round(progress * 100)}%`
             }
-            setTimeout(fn2,10);
-        }
-        setTimeout(fn2,10);
+            //setTimeout(fn2,10);
+            
+        }, 10)
+        //setInterval(fn2, 10)
+        //setTimeout(fn2,10);
     },
     checkLoginStatus(){
         let self = this
@@ -127,10 +139,12 @@ cc.Class({
         }
     },
     handleHotUpdate() {
+        //node version_generator.js -v 1.0.17 -u https://file.idlewar.online/idlewar/ -s build/jsb-link/ -d assets/
         if (!cc.sys.isNative) {
+            this._canRetry = true;
             return;
         }
-        this._storagePath = "https://github.com/deillusion/idlewar";
+        this._storagePath = ((jsb.fileUtils ? jsb.fileUtils.getWritablePath() : '/') + 'blackjack-remote-asset');
         cc.log('Storage path for remote asset : ' + this._storagePath);
 
         // Setup your own version compare handler, versionA and B is versions in string
@@ -167,13 +181,14 @@ cc.Class({
             //this.panel.info.string = "Max concurrent tasks count have been limited to 2";
         }
         
-        this.panel.fileProgress.progress = 0;
-        this.panel.byteProgress.progress = 0;
+        this.byteProgress.progress = 0;
+        this.hotUpdate()
     },
     hotUpdate() {
+        console.log("VillV am:", this._am)
         if (this._am && !this._updating) {
             this._am.setEventCallback(this.updateCb.bind(this));
-
+            console.log("VillV callback set")
             if (this._am.getState() === jsb.AssetsManager.State.UNINITED) {
                 // Resolve md5 url
                 var url = this.manifestUrl.nativeUrl;
@@ -185,7 +200,7 @@ cc.Class({
 
             this._failCount = 0;
             this._am.update();
-            this.panel.updateBtn.active = false;
+            //this.panel.updateBtn.active = false;
             this._updating = true;
         }
     },
@@ -196,52 +211,53 @@ cc.Class({
         {
             
             case jsb.EventAssetsManager.UPDATE_PROGRESSION:
-                this.panel.byteProgress.progress = event.getPercent();
-                this.panel.fileProgress.progress = event.getPercentByFile();
-
-                this.panel.fileLabel.string = event.getDownloadedFiles() + ' / ' + event.getTotalFiles();
-                this.panel.byteLabel.string = event.getDownloadedBytes() + ' / ' + event.getTotalBytes();
-
-                var msg = event.getMessage();
-                if (msg) {
-                    this.panel.info.string = 'Updated file: ' + msg;
-                    // cc.log(event.getPercent()/100 + '% : ' + msg);
+                this.byteProgress.progress = event.getPercent();
+                let downloadedBytes = event.getDownloadedBytes(), totalBytes = event.getTotalBytes();
+                let divisions, unit
+                if(totalBytes > 1024*1024) {
+                    divisions = 1024*1024
+                    unit = 'MB'
+                } else if(totalBytes > 1024) {
+                    divisions = 1024
+                    unit = 'KB'
+                } else {
+                    divisions = 1
+                    unit = 'Byte'
                 }
+                
+                this.label.string = `更新中： ${(downloadedBytes/divisions).toFixed(2)}/${(totalBytes/divisions).toFixed(2)}${unit}`;
+                console.log('VillV: ', this.label.string)
+                break;
+            
+            case jsb.EventAssetsManager.UPDATE_FINISHED:
+                console.log('VillV: update finished')
+                needRestart = true;
                 break;
             case jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
             case jsb.EventAssetsManager.ERROR_PARSE_MANIFEST:
-                this.panel.info.string = 'Fail to download manifest file, hot update skipped.';
+            case jsb.EventAssetsManager.UPDATE_FAILED:
+            case jsb.EventAssetsManager.ERROR_UPDATING:
+            case jsb.EventAssetsManager.ERROR_DECOMPRESS:
+            case jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
+                console.log('VillV: error message', event.getMessage())
                 failed = true;
                 break;
-            
-            
-            case jsb.EventAssetsManager.UPDATE_FAILED:
-                this.panel.info.string = 'Update failed. ' + event.getMessage();
-                this.panel.retryBtn.active = true;
+            case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
                 this._updating = false;
                 this._canRetry = true;
+                console.log("VillV: no updating required")
                 break;
-            case jsb.EventAssetsManager.ERROR_UPDATING:
-                this.panel.info.string = 'Asset update error: ' + event.getAssetId() + ', ' + event.getMessage();
-                break;
-            case jsb.EventAssetsManager.ERROR_DECOMPRESS:
-                this.panel.info.string = event.getMessage();
-                break;
-            case jsb.EventAssetsManager.UPDATE_FINISHED:
-                //this.panel.info.string = 'Update finished. ' + event.getMessage();
-                needRestart = true;
-                break;
-            case jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
-            case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
             default:
-                failed = true;
-                break;
+                console.log("VillV event code: ", event.getEventCode())
+                
         }
 
         if (failed) {
             this._am.setEventCallback(null);
             this._updateListener = null;
             this._updating = false;
+            alertComponent().setCallback(()=>{cc.game.restart();})
+            alertError("更新失败，请重新进入游戏")
         }
 
         if (needRestart) {
@@ -265,5 +281,10 @@ cc.Class({
             cc.audioEngine.stopAll();
             cc.game.restart();
         }
+        if(this._canRetry) {
+            this._am.setEventCallback(null);
+            this._updateListener = null;
+            this.byteProgress.progress = 0;
+        }
     },
-}
+});

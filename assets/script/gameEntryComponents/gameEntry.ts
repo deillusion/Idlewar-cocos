@@ -12,7 +12,7 @@ import { completeLoading, danMu, loadingView } from "../otherComponents/uiUtils"
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class GameEntry extends cc.Component {
 
     @property(cc.Prefab)
     games: cc.Prefab = null

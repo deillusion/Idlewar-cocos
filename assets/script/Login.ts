@@ -30,6 +30,7 @@ export default class NewClass extends cc.Component {
             default:
                 this.loginTestAccount()
         }
+        jsb.EventAssetsManager.ALREADY_UP_TO_DATE
         
     }
 

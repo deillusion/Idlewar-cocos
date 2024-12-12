@@ -121,9 +121,11 @@ export default class NewClass extends cc.Component {
         console.log({auctions,level})
         let commands = routers.startCommands({auctions,level})
         routers.initForCocos()
+        gameService.resetGameGlobals()
         gameService.initGame(commands, versionSelected)
         Object.assign(gameGlobal.gameInfo, MOCKING_GAME_INFO)
         gameGlobal.isTrying = true
+        gameGlobal.isMocking = true
         cc.director.loadScene('gameMain')
     }
 
@@ -267,7 +269,7 @@ const MOCKING_GAME_INFO = {
         "iconList": []
     },
     "startTime": 1718980800,
-    "version": "classic-v0.0.1",
+    "version": "classic-latest",
     "results": 0
 }
 

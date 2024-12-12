@@ -15,15 +15,27 @@ cc.Class({
         let data = getCurrPlayer().findEquip(id), price;
         let Equip = equips()[id]
         this.id=id;
-        if(data) {
+        if(data && data.level >= constant().EQUIP_MAX_LEVEL) {
+            this.buy.interactable = false
+            this.buyLbl.string = "已满级"
+        } else if(data) {
+            this.buy.interactable = true
             this.buyLbl.string = "升级"
             price = Equip.upgrade_price
-            if( data.level >= constant().EQUIP_MAX_LEVEL ) this.buy.node.active = false
+        } else if(getCurrPlayer().isForgingEquip(id)) {
+            this.buy.interactable = false
+            this.buyLbl.string = "锻造中"
         } else {
-            this.buyLbl.string = "购买"
+            this.buy.interactable = true
+            this.buyLbl.string = "锻造"
             price = Equip.buy_price
         }
-        this.price.getComponent('price').init(getCurrPlayer().calculatePrice(price))
+        if(this.buy.interactable) {
+            this.price.getComponent('price').init(getCurrPlayer().calculatePrice(price))
+        } else {
+            this.price.active = false
+        }
+        
         
         let energy = getCurrPlayer().calculateEnergyCost(Equip.energy_cost)
         
@@ -40,10 +52,16 @@ cc.Class({
         this.cost=false;
     },
     buyBtn(){
-        if(this.buyLbl.string=="购买"){
-            makeOperation(`be00${fillWithZero(this.id, 2)}`)
+        let success= false;
+        if(this.buyLbl.string=="锻造"){
+            success = makeOperation(`be00${fillWithZero(this.id, 2)}`)
         } else {
-            makeOperation(`ue00${fillWithZero(this.id, 2)}`)
+            success = makeOperation(`ue00${fillWithZero(this.id, 2)}`)
+        }
+        if(success) {
+            let deckNode = cc.find('Canvas/equip');
+            deckNode.getComponent('equips').refresh()
+            danMu("开始" + this.buyLbl.string)
         }
         this.init(this.id)
     },
@@ -54,4 +72,6 @@ cc.Class({
 
 const { makeOperation } = require('../battleMiddleWare/gameService');
 const { getCurrPlayer, equips, constant } = require('../battleMiddleWare/gameUtils');
-const { fillWithZero } = require('../otherComponents/commonUtils');
+const { fillWithZero } = require('../otherComponents/commonUtils');const { danMu } = require('../otherComponents/uiUtils');
+const { Coin } = require('../xjfz-journey/classic-latest/main/objects/Coin');
+

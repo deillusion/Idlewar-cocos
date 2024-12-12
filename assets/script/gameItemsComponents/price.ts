@@ -26,12 +26,11 @@ export default class NewClass extends cc.Component {
         COIN_KEYS.forEach(key => {
             if(coin[key]) type = key
         })
-
         if(!type) {
             this.node.active = false
             return
         }
-        
+        this.node.active = true
         //this.layout.node.removeAllChildren()
         let address = `coins/${type}.png`
         let self = this
@@ -44,4 +43,4 @@ export default class NewClass extends cc.Component {
 
     // update (dt) {}
 }
-import { Coin, COIN_KEYS } from '../xjfz-journey/classic-v0.0.1/main/objects/Coin'
+import { Coin, COIN_KEYS } from '../xjfz-journey/classic-latest/main/objects/Coin'

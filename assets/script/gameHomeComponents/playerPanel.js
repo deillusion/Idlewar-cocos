@@ -18,7 +18,7 @@ cc.Class({
     refresh() {
         
         let player = getPlayer(this.code)
-        this.powerLbl.string = convertPowerString(player.power)
+        this.powerLbl.string = player.power
 
         let playerInfo = gameGlobals.gameInfo.playerInfo[this.code - 1]
         this.icon.getComponent("icon").init(playerInfo.iconUrl)

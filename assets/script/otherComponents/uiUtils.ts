@@ -90,8 +90,18 @@ let obj = {
     root:function(){
         return cc.find('Canvas');
     },
+    checkInstruction: function() {
+        let instruction = cc.find("instruction")
+        let stepCount = instruction.getComponent("instruction").stepsDetail.length
+        if(user.instruction < stepCount) {
+            instruction.active = true
+        }
+    },
     alertPrefab:null
 }
 
 export = obj
 var transitionSign=false;
+
+import { user } from "../Globals";
+//import InstructionManager from "../instruction";

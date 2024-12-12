@@ -2,6 +2,8 @@
 const global = require('./gameGlobals')
 const { getEquip, getSpell, getPets, getBuffs } = require('../xjfz-journey/index')
 const { DECORATION_MENU } = require('../Constants')
+const { Player } = require('../xjfz-journey/classic-latest/main/Player')
+const { temp } = require('../Globals')
 const obj = {
     constant: function(){ return global.gameModule.constants },
     equips: function(){ return getEquip(global.gameVersion) },
@@ -14,8 +16,16 @@ const obj = {
         return global.gameObj.getPlayer(i)
     },
 
+    /**
+     * 
+     * @returns {Player}
+     */
     getCurrPlayer:function() {
         return global.gameObj.getPlayer(global.currPLayerIndex)
+    },
+
+    getGameObj: function() {
+        return global.gameObj
     },
 
     getTimePrefix:function() {
@@ -53,6 +63,16 @@ const obj = {
     refreshPage:function() {
         //global.currTime = global.gameObj.currTime
         //global.currPLayerIndex = global.gameObj.currUser.code
+        let fn = ()=>{
+            if(temp.gameMainRefreshing) {
+                setTimeout(fn, 50)
+            } else {
+                temp.gameMainRefreshing = true
+                cc.find('Canvas').getComponent('gameMain').refresh()
+            }
+            
+        }
+        setTimeout(fn, 50)
         cc.find('Canvas').getComponent('gameMain').refresh()
     },
     mapNode: function() {

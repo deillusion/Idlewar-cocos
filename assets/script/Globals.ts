@@ -14,11 +14,12 @@ let user = {
     game_times:15,
     win_times:11,
     gems:13,
-    trophic:233
+    trophic:233,
+    instruction: 0,
 }
 
 let auth = {
-    userid: 273,
+    userid: 0,
     token: "kMgoQ1KnQ8CIz/cfmfhRNQ==",
 }
 
@@ -45,4 +46,12 @@ let music = {
 let foreigners = {
 
 }
-export { config, user, top, auth, journey, decoration, music, foreigners }
+
+let imageBase64Url = {
+
+}
+
+let temp = {
+    gameMainRefreshing: 0
+}
+export { config, user, top, auth, journey, decoration, music, foreigners, imageBase64Url, temp }

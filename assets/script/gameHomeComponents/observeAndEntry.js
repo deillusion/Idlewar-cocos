@@ -15,7 +15,8 @@ cc.Class({
         page: cc.Node,
         actionType: "",
         commonBtns: cc.Node,
-        specialCase: cc.Node
+        specialCase: cc.Node,
+        timer: cc.Node
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -24,7 +25,9 @@ cc.Class({
 
     start() {
         this.node.zIndex = 201
-        if(gameGlobals.isTrying) this.node.active = false
+        if(gameGlobals.isTrying) {
+            this.node.active = false
+        }
         //this.refresh()
     },
 
@@ -43,8 +46,7 @@ cc.Class({
 
         this.observedTimesLbl.string = `今日已${actionName}：${observed}次`
         this.remainTimesLbl.string = `剩余${actionName}次数：${remain}次`
-
-        this.node.active = info.status != 3 && info.status != 4
+        this.node.active = info.status != 3 && info.status != 4 && !gameGlobals.isMocking
         this.commonBtns.active = info.status != 2
         this.specialCase.active = info.status == 2
     },
@@ -52,10 +54,11 @@ cc.Class({
     adsObserving() {
         let self = this
         let roomid = gameGlobals.gameInfo.roomid
-        runAds("", roomid, function(success) {
+        
+        runAds("enterJourney", roomid.toString(), function(success) {
             if(success) {
-                sendGetForms(`journey/room/${roomid}`, {}, function(response) {
-                    self.refreshGame(response)
+                sendGetForms(`journey/records/${roomid}`, {}, function(response) {
+                    self.refreshGame(response+"\n")
                     self.close()
                 })
             }
@@ -88,10 +91,28 @@ cc.Class({
     },
 
     refreshGame(response) {
+        resetGameGlobals()
         initGame(response.split("\n"))
-        let minutes = this.actionType == 'observing' ? 30 : 5
-        gameGlobals.gameInfo.refreshTime = Date.now() + minutes*60*1000;
-        gameGlobals.gameInfo[this.actionType].status = 3
+        let actionType = this.actionType
+        if(actionType == 'observing') {
+            let startTime = new Date(gameGlobals.gameInfo.startTime).valueOf(), now = Date.now()
+            let secondDiff = Math.floor((now - startTime)/1000)
+            let days = Math.floor(secondDiff/86400)
+            let seconds = secondDiff%86400
+            global.currTime = days*constant().ONE_JOURNEY_DAY + seconds
+            makeOperation(`ct`)
+        }
+        
+        
+        let minutes = actionType == 'observing' ? 30 : 5
+        let actionName = actionType == 'observing' ? "观测" : "修行"
+        gameGlobals.gameInfo[actionType].status = 4
+        this.timer.getComponent("timer").startTiming(Date.now() + minutes*60*1000, ()=>{
+            danMu(`本次${actionName}已结束`)
+            gameGlobals.gameInfo[actionType].status = 1
+            refreshPage()
+        })
+        
         refreshPage()
         this.page.active = false
     },
@@ -107,5 +128,8 @@ cc.Class({
 const gameGlobals = require("../battleMiddleWare/gameGlobals");
 const { runAds } = require('../AnyThinkAds/AdsManager');
 const { sendGetForms, sendPostForms } = require("../http");
-const { initGame } = require("../battleMiddleWare/gameService");
-const { refreshPage } = require("../battleMiddleWare/gameUtils");
+const { initGame, makeOperation, resetGameGlobals } = require("../battleMiddleWare/gameService");
+const { refreshPage, constant } = require("../battleMiddleWare/gameUtils");
+const { updateGame } = require("../xjfz-journey/classic-latest/gameLogicRoutes");const { fillWithZero } = require("../otherComponents/commonUtils");
+const { danMu } = require("../otherComponents/uiUtils");
+

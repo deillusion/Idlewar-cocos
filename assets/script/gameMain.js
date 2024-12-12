@@ -7,6 +7,8 @@ cc.Class({
         entry:cc.Node,
         history:cc.Node,
         send:cc.Node,
+        calculator: cc.Node,
+        mockingSign: cc.Node,
         //中上方三个玩家
         players:cc.Node,
         //中部核心地图
@@ -16,6 +18,7 @@ cc.Class({
         equips:cc.Prefab,
         spells:cc.Prefab,
         pets:cc.Prefab,
+        forge:cc.Prefab,
         //控制台
         control:cc.Node,
         //发起挑战后的界面
@@ -26,6 +29,10 @@ cc.Class({
         
         //新加的分割线
         _zIndexMap: null,
+    },
+    onLoad() {
+        checkInstruction()
+        this.node.on(cc.Node.EventType.TOUCH_END, this.clicked)
     },
     start () {
         
@@ -38,16 +45,17 @@ cc.Class({
             }
             music.playingType = 'journey'
         });
-        if(gameGlobals.isTrying){
-            //this.sendBtn.node.active=false;
-            //this.coins.active=false
+        if(gameGlobals.isMocking){
+            this.mockingSign.active = true
+            this.observe.active = false
+            this.entry.active = false
+            this.send.active = false
         } else {
             switch(user.userid) {
                 case gameGlobals.gameInfo.player1id: gameGlobals.currPLayerIndex = 1; break
                 case gameGlobals.gameInfo.player2id: gameGlobals.currPLayerIndex = 2; break
                 case gameGlobals.gameInfo.player3id: gameGlobals.currPLayerIndex = 3; break
-            }
-            
+            }   
         }
 
         //console.log(this)
@@ -70,6 +78,10 @@ cc.Class({
         this.entry.getComponent('observeAndEntry').refresh()
         this.map.getComponent('map').refresh();
         this.control.getComponent('console').refresh()
+        this.send.getComponent('submit').refresh()
+        if(cc.find('Canvas/pets')) {
+            cc.find('Canvas/pets').getComponent('pets').refresh()
+        }
         //this.pets.getComponent('pets').refresh();
         //this.equips.getComponent('equips').refresh();
         //this.spells.getComponent('spells').refresh();
@@ -81,7 +93,7 @@ cc.Class({
             child.zIndex = self._zIndexMap[child.uuid]
         })
 
-        
+        temp.gameMainRefreshing = false
         //this.history.getComponent('history').refresh();
     },
     attackBtn(){
@@ -107,11 +119,14 @@ cc.Class({
     moveBtn(){
         let coordinates = getCurrPlayer().findSpell(MoveSpell.id).validLocations()
         this.map.getComponent('map').enableSelection(coordinates, function(x, y) {
-            makeOperation(`bs${x}${y}00`)
+            makeOperation(`us${x}${y}00`)
         })
     },
     petsBtn(){
         this.node.addChild(cc.instantiate(this.pets))
+    },
+    forgingBtn(){
+        this.node.addChild(cc.instantiate(this.forge))
     },
     historyBtn(){
         loadingView()
@@ -127,12 +142,19 @@ cc.Class({
         var battle=cc.instantiate(this.fightUI);
         battle.init(player1,player2);
     },
-
+    calculatorBtn() {
+        this.calculator.getComponent('calculatorManager').refresh()
+        this.calculator.active = true
+    },
+    clicked() {
+        console.log('game main clicked')
+        cc.find("instruction").getComponent('instruction').clicked()
+        
+    }
 });
-const { config, music, user } = require('./Globals');
+const { config, music, user, temp } = require('./Globals');
 const gameGlobals = require('./battleMiddleWare/gameGlobals');
 const { makeOperation } = require('./battleMiddleWare/gameService');
 const { getCurrPlayer } = require('./battleMiddleWare/gameUtils');
-const { loadingView, completeLoading } = require('./otherComponents/uiUtils');
-const { MoveSpell } = require('./xjfz-journey/classic-v0.0.1/main/Spell');
-
+const { loadingView, completeLoading, checkInstruction } = require('./otherComponents/uiUtils');
+const { MoveSpell } = require('./xjfz-journey/classic-latest/main/Spell');

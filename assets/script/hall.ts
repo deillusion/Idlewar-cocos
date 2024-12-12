@@ -43,6 +43,7 @@ export default class NewClass extends cc.Component {
     ascend: boolean = true
 
     onLoad () {
+        checkInstruction()
         this.nickname.string = "" + user.nickname
         this.trophyLbl.string = "" + user.trophic
         this.gemLbl.string = "" + user.gems
@@ -122,4 +123,4 @@ export default class NewClass extends cc.Component {
 //import user = require('./userComponents/userGlobals');
 //import user from './userComponents/userGlobals'
 import { config, music, user } from './Globals';
-import { loadingView } from './otherComponents/uiUtils'
+import { checkInstruction, loadingView } from './otherComponents/uiUtils'

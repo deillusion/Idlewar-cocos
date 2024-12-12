@@ -12,17 +12,20 @@ cc.Class({
             if(!item.uiDisplay) continue
             let child = initNode(this.item, "petItem", item.id, "detail")
             this.list.node.addChild(child)
+            this.list.updateLayout();
+            this.list.node.y = 445 - this.list.node.height / 2
         }
         getCurrPlayer().Pets.forEach(pet => {
             let clazz = typeDict()[pet.type]
-            let child = initNode(this.item, "petItem", clazz.id, "pet")
+            let child = initNode(this.item, "petItem", clazz.id, "pet", pet)
             this.ownList.node.addChild(child)
         })
     },
     refresh(){
-        
-        this.list.node.children.forEach((item) => {
-            item.getComponent('petItem').refresh()
+        getCurrPlayer().Pets.forEach((pet, index) => {
+            let clazz = typeDict()[pet.type]
+            let child = this.ownList.node.children[index]
+            child.getComponent('petItem').init(clazz.id, "pet", pet)
         })
     },
     viewDeckBtn() {

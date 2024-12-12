@@ -2,7 +2,8 @@ cc.Class({
     extends: cc.Component,
     properties: {
         list:cc.Layout,
-        item:cc.Prefab,
+        forgeList:cc.Node,
+        item:cc.Prefab
     },
     start(){
         let equipList = equips()
@@ -10,16 +11,27 @@ cc.Class({
             if(!equipList[i] || !equipList[i].valid) continue
             this.list.node.addChild(initNode(this.item, 'equipItem', i));
         }
+
+        this.refreshForgeList()
     },
     refresh(){
+        console.log("equip refreshing")
         this.list.node.children.forEach((item) => {
             item.getComponent('equipItem').refresh()
         })
+
+        this.refreshForgeList()
+    },
+    refreshForgeList() {
+        let forging = getCurrPlayer().forgingList
+            .filter(forge => ["UpgradeEquipListener", "ForgeEquipListener"].includes(forge.type))
+        this.forgeList.getComponent("forge").init(forging)
+        
     },
 
     backBtn(){
-        this.node.active=false;
+        this.node.removeFromParent();
     },
 });
 let { initNode } = require('../otherComponents/uiUtils');
-const { equips } = require("../battleMiddleWare/gameUtils");
+const { equips, getCurrPlayer } = require("../battleMiddleWare/gameUtils");

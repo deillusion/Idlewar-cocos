@@ -31,7 +31,7 @@ cc.Class({
 
         let self = this
         let clazz = typeDict()[data.type]
-        console.log(clazz)
+        //console.log(clazz)
         this.nickname.string = clazz.pet_name
 
         cc.loader.loadRes(clazz.iconUrl, cc.SpriteFrame, function (err, spriteFrame2) {
@@ -43,7 +43,7 @@ cc.Class({
         this.initMiningType(data.mining_type)
         this.miningNumLabel.string = `已炼化：${data.mining_num.totalValue()}`
 
-        this.powerLabel.string = convertPowerString(data.power)
+        this.powerLabel.string = data.power
         this.damageLabel.string = data.damage
         this.scopeLabel.string = data.scope
         this.aspdLabel.string = data.aspd
@@ -118,4 +118,4 @@ cc.Class({
 const gameGlobals = require('../battleMiddleWare/gameGlobals');
 const { makeOperation } = require('../battleMiddleWare/gameService');
 var { typeDict, convertPowerString, refreshPage } = require('../battleMiddleWare/gameUtils');
-const { COIN_KEYS } = require('../xjfz-journey/classic-v0.0.1/main/objects/Coin');
+const { COIN_KEYS } = require('../xjfz-journey/classic-latest/main/objects/Coin');

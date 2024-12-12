@@ -153,4 +153,4 @@ const gameGlobals = require('../battleMiddleWare/gameGlobals');
 //const { decoration } = require('../Globals');
 const { typeDict, mapNode, getPlayerIconUrl } = require('../battleMiddleWare/gameUtils');
 const { initNode, root } = require('../otherComponents/uiUtils');
-const { Creature } = require('../xjfz-journey/classic-v0.0.1/main/Creature');
+const { Creature } = require('../xjfz-journey/classic-latest/main/Creature');

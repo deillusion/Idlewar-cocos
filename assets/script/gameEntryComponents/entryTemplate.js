@@ -17,6 +17,7 @@ cc.Class({
 
             let NUM_CN = ["无", "壹", "贰", "叁", "肆", "伍", "陆", "柒"]
             this.date.string = NUM_CN[date];
+            this.isEnd = false
         } else {
             let index = [obj.player1id, obj.player2id, obj.player3id].indexOf(user.userid) //obj.playerInfo.findIndex(info => info.userid == user.userid)
             let rank = parseInt(obj.results.toString().charAt(index))
@@ -64,7 +65,7 @@ cc.Class({
                 delete response['overview']
                 Object.assign(info, response)
                 info.refreshTime = null;
-                console.log(journey)
+                resetGameGlobals()
                 gameGlobals.isTrying = self.isEnd
                 journey.getRouter(info.version).initForCocos()
                 initGame(response.records, info.version)
@@ -73,7 +74,7 @@ cc.Class({
         }
     },
 });
-const { initGame } = require('../battleMiddleWare/gameService');
+const { initGame, resetGameGlobals } = require('../battleMiddleWare/gameService');
 const http = require('../http');
 const gameGlobals = require('../battleMiddleWare/gameGlobals');
 const journey = require('../xjfz-journey/index');

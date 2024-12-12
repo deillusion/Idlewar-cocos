@@ -40,4 +40,4 @@ export default class NewClass extends cc.Component {
 }
 
 import gameGlobals = require('../battleMiddleWare/gameGlobals.js')
-import { Log } from '../xjfz-journey/classic-v0.0.1/main/loggers/baseLoggers.js';
+import { Log } from '../xjfz-journey/classic-latest/main/loggers/baseLoggers.js';

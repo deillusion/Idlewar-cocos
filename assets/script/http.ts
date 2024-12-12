@@ -1,5 +1,5 @@
-import { alertServerError, loadingView, completeLoading, alertComponent } from "./otherComponents/uiUtils";
-import { user, auth } from './Globals'
+import { alertServerError, loadingView, completeLoading, alertComponent, danMu } from "./otherComponents/uiUtils";
+import { user, auth, imageBase64Url } from './Globals'
 import { fetch } from './netComponenents/fetch'
 const uri = "https://www.idlewar.online";
 
@@ -20,7 +20,8 @@ let sendGetForms = function(urlApi,paramJson,callback, config: any = {}){
 
 export {
     sendGetForms,
-    sendPostForms
+    sendPostForms,
+    downloadImg
 }
 
 function handleApi(urlApi: string) {
@@ -91,23 +92,25 @@ function responseCallback(xhr,callback){
     },5000);
 }
 
-function sendPostForms2(urlApi,paramJson,callback){
-    //URL未设置
-    var xhr=new XMLHttpRequest();
-    responseCallback(xhr,callback);
-    xhr.timeout=5000;
-    xhr.open("POST","http://106.52.82.57:8000"+"/"+urlApi);
-    xhr.setRequestHeader("Content-Type","application/json");
-    if (cc.sys.isNative){
-        console.log('isNative');
-        //xhr.setRequestHeader("Accept-Encoding","gzip,deflate","text/html;charset=UTF-8");
+function downloadImg(url: string, callback: Function) {
+    if(imageBase64Url[url]) {
+        callback(imageBase64Url[url])
+        return
     }
-    var args='';
-    for(var i=0;i<paramJson.length;i++){
-        cc.log(paramJson[i]);
-        args+=paramJson[i].key+"="+paramJson[i].value+"&";
-    }
-    xhr.send(JSON.stringify(paramJson));
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      const reader = new FileReader();
+      reader.onloadend = function() {
+        imageBase64Url[url] = reader.result
+        callback(reader.result)
+      };
+      //reader.onerror = () => danMu("头像加载失败");
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    //xhr.setRequestHeader()
+    xhr.responseType = 'blob';
+    xhr.send();
 }
 
 function urlEncode(str: string)

@@ -12,7 +12,7 @@ import { alertServerError, completeLoading, danMu, loadingView } from "../otherC
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class StartJourney extends cc.Component {
 
     @property(cc.Node)
     auctions: cc.Node = null

@@ -19,7 +19,7 @@ cc.Class({
     // onLoad () {},
 
     refresh () {
-        this.node.active = gameGlobals.isEntering
+        this.node.active = gameGlobals.isEntering && !gameGlobals.isTrying
     },
 
     submit() {

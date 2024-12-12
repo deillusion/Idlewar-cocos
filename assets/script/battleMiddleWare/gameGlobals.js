@@ -1,11 +1,11 @@
 
-const { AnimationPlayer } = require("../xjfz-journey/classic-v0.0.1/main/animations/animationPlayer");
+const { AnimationPlayer } = require("../xjfz-journey/classic-latest/main/animations/animationPlayer");
 const journey = require("../xjfz-journey/index");
 
 module.exports={
-    gameModule: journey["classic-v0.0.1"],
+    gameModule: journey["classic-latest"],
     //当前的游戏数据
-    gameObj: journey.getRouter('classic-v0.0.1').newGame(),
+    gameObj: journey.getRouter('classic-latest').newGame(),
     gameInfo:{
         "roomid": 17,
         "player1id": 274,
@@ -139,11 +139,11 @@ module.exports={
             "iconList": []
         },
         "startTime": 1718980800,
-        "version": "classic-v0.0.1",
+        "version": "classic-latest",
         "results": 0
     },
-    gameVersion: "classic-v0.0.1",
-    gameRouter: journey["classic-v0.0.1"].routers,
+    gameVersion: "classic-latest",
+    gameRouter: journey["classic-latest"].routers,
     //开始修行前的位置
     initPosition:-1,
     //当前的游戏数据在历史中的位置
