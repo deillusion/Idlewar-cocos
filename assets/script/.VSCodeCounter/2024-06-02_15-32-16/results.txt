@@ -1,0 +1,90 @@
+Date : 2024-06-02 15:32:16
+Directory : c:\Users\Administrator\Idlewar\assets\script
+Total : 56 files,  3103 codes, 331 comments, 133 blanks, all 3567 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         56 |      3,103 |        331 |        133 |      3,567 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                               | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                  |         56 |      3,103 |        331 |        133 |      3,567 |
+| . (Files)                                                                          |         11 |        591 |        216 |         34 |        841 |
+| battleInfo                                                                         |          3 |         30 |          0 |          0 |         30 |
+| battleMiddleWare                                                                   |          3 |         94 |         25 |          6 |        125 |
+| chatComponents                                                                     |          3 |        166 |          9 |          6 |        181 |
+| gameEntryComponents                                                                |          3 |        137 |          1 |          8 |        146 |
+| gameHomeComponents                                                                 |         10 |        694 |         16 |         43 |        753 |
+| gameItemsComponents                                                                |         10 |        277 |          2 |         19 |        298 |
+| otherComponents                                                                    |          9 |        837 |         51 |         11 |        899 |
+| storageMgr                                                                         |          1 |         30 |          0 |          2 |         32 |
+| userComponents                                                                     |          3 |        247 |         11 |          4 |        262 |
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                           | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Administrator\Idlewar\assets\script\Constants.js                          | JavaScript |          4 |          0 |          0 |          4 |
+| c:\Users\Administrator\Idlewar\assets\script\Globals.js                            | JavaScript |          4 |          0 |          1 |          5 |
+| c:\Users\Administrator\Idlewar\assets\script\Hall.js                               | JavaScript |        101 |          3 |          1 |        105 |
+| c:\Users\Administrator\Idlewar\assets\script\LoadingLogic.js                       | JavaScript |         82 |        193 |          4 |        279 |
+| c:\Users\Administrator\Idlewar\assets\script\Menu.js                               | JavaScript |         92 |          6 |          5 |        103 |
+| c:\Users\Administrator\Idlewar\assets\script\battleInfo\Buff.js                    | JavaScript |         10 |          0 |          0 |         10 |
+| c:\Users\Administrator\Idlewar\assets\script\battleInfo\Equips.js                  | JavaScript |         10 |          0 |          0 |         10 |
+| c:\Users\Administrator\Idlewar\assets\script\battleInfo\Spell.js                   | JavaScript |         10 |          0 |          0 |         10 |
+| c:\Users\Administrator\Idlewar\assets\script\battleMiddleWare\gameGlobals.js       | JavaScript |         19 |         10 |          3 |         32 |
+| c:\Users\Administrator\Idlewar\assets\script\battleMiddleWare\gameService.js       | JavaScript |         33 |          5 |          1 |         39 |
+| c:\Users\Administrator\Idlewar\assets\script\battleMiddleWare\gameUtils.js         | JavaScript |         42 |         10 |          2 |         54 |
+| c:\Users\Administrator\Idlewar\assets\script\chatComponents\chatDetails.js         | JavaScript |         77 |          2 |          2 |         81 |
+| c:\Users\Administrator\Idlewar\assets\script\chatComponents\chatInfo.js            | JavaScript |         30 |          5 |          3 |         38 |
+| c:\Users\Administrator\Idlewar\assets\script\chatComponents\chatTemplate.js        | JavaScript |         59 |          2 |          1 |         62 |
+| c:\Users\Administrator\Idlewar\assets\script\deck.js                               | JavaScript |         18 |          2 |          2 |         22 |
+| c:\Users\Administrator\Idlewar\assets\script\friend.js                             | JavaScript |         23 |          0 |          3 |         26 |
+| c:\Users\Administrator\Idlewar\assets\script\gameEntryComponents\chooseTemplate.js | JavaScript |         26 |          1 |          2 |         29 |
+| c:\Users\Administrator\Idlewar\assets\script\gameEntryComponents\entryTemplate.js  | JavaScript |         51 |          0 |          5 |         56 |
+| c:\Users\Administrator\Idlewar\assets\script\gameEntryComponents\gameEntry.js      | JavaScript |         60 |          0 |          1 |         61 |
+| c:\Users\Administrator\Idlewar\assets\script\gameHomeComponents\calculator.js      | JavaScript |        213 |          1 |          2 |        216 |
+| c:\Users\Administrator\Idlewar\assets\script\gameHomeComponents\calculatorComp.js  | JavaScript |         48 |          0 |          2 |         50 |
+| c:\Users\Administrator\Idlewar\assets\script\gameHomeComponents\console.js         | JavaScript |         96 |          2 |         12 |        110 |
+| c:\Users\Administrator\Idlewar\assets\script\gameHomeComponents\getCoins.js        | JavaScript |         45 |          4 |          4 |         53 |
+| c:\Users\Administrator\Idlewar\assets\script\gameHomeComponents\gridDetails.js     | JavaScript |        116 |          1 |          1 |        118 |
+| c:\Users\Administrator\Idlewar\assets\script\gameHomeComponents\gridIcon.js        | JavaScript |         41 |          0 |          5 |         46 |
+| c:\Users\Administrator\Idlewar\assets\script\gameHomeComponents\history.js         | JavaScript |         84 |          1 |          9 |         94 |
+| c:\Users\Administrator\Idlewar\assets\script\gameHomeComponents\map.js             | JavaScript |         20 |          0 |          0 |         20 |
+| c:\Users\Administrator\Idlewar\assets\script\gameHomeComponents\package.js         | JavaScript |         16 |          0 |          2 |         18 |
+| c:\Users\Administrator\Idlewar\assets\script\gameHomeComponents\playerPanel.js     | JavaScript |         15 |          7 |          6 |         28 |
+| c:\Users\Administrator\Idlewar\assets\script\gameItemsComponents\buffDetails.js    | JavaScript |         23 |          0 |          0 |         23 |
+| c:\Users\Administrator\Idlewar\assets\script\gameItemsComponents\buffItem.js       | JavaScript |         22 |          0 |          2 |         24 |
+| c:\Users\Administrator\Idlewar\assets\script\gameItemsComponents\equipDetails.js   | JavaScript |         46 |          0 |          2 |         48 |
+| c:\Users\Administrator\Idlewar\assets\script\gameItemsComponents\equipItem.js      | JavaScript |         39 |          0 |          2 |         41 |
+| c:\Users\Administrator\Idlewar\assets\script\gameItemsComponents\equips.js         | JavaScript |         25 |          0 |          2 |         27 |
+| c:\Users\Administrator\Idlewar\assets\script\gameItemsComponents\pets.js           | JavaScript |         22 |          0 |          2 |         24 |
+| c:\Users\Administrator\Idlewar\assets\script\gameItemsComponents\spellDetails.js   | JavaScript |         36 |          0 |          4 |         40 |
+| c:\Users\Administrator\Idlewar\assets\script\gameItemsComponents\spellItem.js      | JavaScript |         23 |          1 |          1 |         25 |
+| c:\Users\Administrator\Idlewar\assets\script\gameItemsComponents\spells.js         | JavaScript |         19 |          1 |          2 |         22 |
+| c:\Users\Administrator\Idlewar\assets\script\gameItemsComponents\tasks.js          | JavaScript |         22 |          0 |          2 |         24 |
+| c:\Users\Administrator\Idlewar\assets\script\gameMain.js                           | JavaScript |         71 |          8 |          2 |         81 |
+| c:\Users\Administrator\Idlewar\assets\script\http.js                               | JavaScript |        101 |          2 |         12 |        115 |
+| c:\Users\Administrator\Idlewar\assets\script\otherComponents\alert.js              | JavaScript |         22 |          0 |          1 |         23 |
+| c:\Users\Administrator\Idlewar\assets\script\otherComponents\icon.js               | JavaScript |         20 |         10 |          4 |         34 |
+| c:\Users\Administrator\Idlewar\assets\script\otherComponents\instruction.js        | JavaScript |        284 |          4 |          0 |        288 |
+| c:\Users\Administrator\Idlewar\assets\script\otherComponents\playerDetails.js      | JavaScript |        153 |          3 |          1 |        157 |
+| c:\Users\Administrator\Idlewar\assets\script\otherComponents\playerTemplate.js     | JavaScript |        165 |         33 |          0 |        198 |
+| c:\Users\Administrator\Idlewar\assets\script\otherComponents\setting.js            | JavaScript |         57 |          0 |          1 |         58 |
+| c:\Users\Administrator\Idlewar\assets\script\otherComponents\topTemplate.js        | JavaScript |         22 |          0 |          3 |         25 |
+| c:\Users\Administrator\Idlewar\assets\script\otherComponents\uiUtils.js            | JavaScript |         74 |          1 |          0 |         75 |
+| c:\Users\Administrator\Idlewar\assets\script\otherComponents\viewTemplate.js       | JavaScript |         40 |          0 |          1 |         41 |
+| c:\Users\Administrator\Idlewar\assets\script\storageMgr\stoarge.js                 | JavaScript |         30 |          0 |          2 |         32 |
+| c:\Users\Administrator\Idlewar\assets\script\top.js                                | JavaScript |         48 |          0 |          4 |         52 |
+| c:\Users\Administrator\Idlewar\assets\script\try.js                                | JavaScript |         47 |          2 |          0 |         49 |
+| c:\Users\Administrator\Idlewar\assets\script\userComponents\userDetails.js         | JavaScript |        163 |         11 |          2 |        176 |
+| c:\Users\Administrator\Idlewar\assets\script\userComponents\userGlobals.js         | JavaScript |         21 |          0 |          0 |         21 |
+| c:\Users\Administrator\Idlewar\assets\script\userComponents\userUtils.js           | JavaScript |         63 |          0 |          2 |         65 |
+| Total                                                                              |            |      3,103 |        331 |        133 |      3,567 |
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
