@@ -33,6 +33,7 @@ cc.Class({
 
     },
     refresh:function(){
+        this.recover()
         let MAP_SIZE = constant().MAP_SIZE
         let children = this.layout.node.children
         for(var y = 0; y < MAP_SIZE; y++){
@@ -70,15 +71,19 @@ cc.Class({
         })
         this.inputBlocker.active = false
         this.node.zIndex = 0
-        refreshPage()
+        //refreshPage()
     },
-    update(dt) {
-        if(config.playAnimation) {
-            gameGlobals.animationPlayer.play({x: 99, y: 99})
-        }
-        
+    start() {
+        setInterval(()=> {
+            if(config.playAnimation) {
+                gameGlobals.animationPlayer.play({x: 99, y: 99})
+            }
+            //console.log("animation checking")
+        }, 16)
     }
 });
 const { config } = require('../Globals');
 const gameGlobals = require('../battleMiddleWare/gameGlobals');
 const { constant, refreshPage } = require('../battleMiddleWare/gameUtils');
+const { FrameTimer } = require('../otherComponents/frameTimer');
+

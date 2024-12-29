@@ -15,7 +15,7 @@ let user = {
     win_times:11,
     gems:13,
     trophic:233,
-    instruction: 0,
+    instruction: 99999,
 }
 
 let auth = {

@@ -1,7 +1,7 @@
 let obj = {
     danMu:function(str){
         console.log('triggered');
-        var node = new cc.Node("123");
+        var node = new cc.Node("danMu");
         node.width=600;
         node.height=70;
         node.x = 0
@@ -27,6 +27,7 @@ let obj = {
         var canvas=cc.find('Canvas');
         canvas.addChild(node);
         var fn=function(){
+            if(!cc.find('Canvas/danMu')) return
             node.y+=2;
             if(node.y>=50){
                 node.opacity-=2;

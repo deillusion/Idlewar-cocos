@@ -603,15 +603,15 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 248,
-      "height": 83.6
+      "width": 280,
+      "height": 88.2
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -664,11 +664,11 @@
     "_dstBlendFactor": 771,
     "_string": "九焰焚天",
     "_N$string": "九焰焚天",
-    "_fontSize": 60,
-    "_lineHeight": 60,
+    "_fontSize": 70,
+    "_lineHeight": 70,
     "_enableWrapText": true,
     "_N$file": {
-      "__uuid__": "053eeafe-4501-4980-8b61-d00a37800881"
+      "__uuid__": "b700de14-6818-4a29-b3b1-8415a2a3a468"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -689,7 +689,7 @@
     "node": {
       "__id__": 15
     },
-    "_enabled": true,
+    "_enabled": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 0,

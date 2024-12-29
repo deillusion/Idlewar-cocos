@@ -47,7 +47,7 @@ export default class NewClass extends cc.Component {
             let chinIndex = rawIndex.split(".").map(num => numMap[parseInt(num)]).join("")
             return `${chinType}·${chinIndex}`
         }
-        let versionList: string[] = journey.VALID_VERSION_LIST
+        let versionList: string[] = journey.VALID_VERSION_LIST.filter(version => version != "classic-latest")
         versionList.forEach((version: string) => {
             let toggle = cc.instantiate(this.labelToggle)
             let label = version2Chinese(version)

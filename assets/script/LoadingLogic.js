@@ -26,7 +26,7 @@ cc.Class({
     },
     // use this for initialization
     onLoad: function () {
-        cc.game.setFrameRate(60)
+        //cc.game.setFrameRate(60)
         if(!cc.sys.isNative && cc.sys.isMobile){
             var cvs = this.node.getComponent(cc.Canvas);
             cvs.fitHeight = true;
@@ -35,7 +35,7 @@ cc.Class({
         //this.tipLabel.string = this._stateStr;
         let localConfig = JSON.parse(cc.sys.localStorage.getItem("config"))
         Object.assign(config, localConfig)
-        //cc.sys.localStorage.setItem("auth", JSON.stringify({userid:274,token:"kMgoQ1KnQ8CIz/cfmfhRNQ=="}))  
+        cc.sys.localStorage.setItem("auth", JSON.stringify({userid:274,token:"kMgoQ1KnQ8CIz/cfmfhRNQ=="}))  
 
         this._splash = cc.find("初始画面/logo");
         cc.find("初始画面").active = true

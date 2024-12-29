@@ -63,6 +63,7 @@ const obj = {
     refreshPage:function() {
         //global.currTime = global.gameObj.currTime
         //global.currPLayerIndex = global.gameObj.currUser.code
+        console.log("page refreshed")
         let fn = ()=>{
             if(temp.gameMainRefreshing) {
                 setTimeout(fn, 50)

@@ -56,7 +56,7 @@ export default class NewClass extends cc.Component {
         this.trophy.string = info.trophic
         this.maxTrophy.string = info.maxTrophic
         this.enrollDate.string = info.enrolledDate
-        this.learningRate.string = info.learningRate
+        this.learningRate.string = info.learningRate.toFixed(2)
         this.gameTimes.string = info.game_times
         this.winRate.string = getPercentage(info.win_times/info.game_times)
         

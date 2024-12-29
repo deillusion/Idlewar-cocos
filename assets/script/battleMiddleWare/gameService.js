@@ -38,6 +38,7 @@ let obj={
         if(config.playAnimation) {
             let fn = () => {
                 if(global.animationPlayer.isPlaying) {
+                    console.log("playing")
                     setTimeout(fn, 20)
                 } else {
                     refreshPage()

@@ -130,7 +130,7 @@ cc.Class({
 
     onClickCallback() {
         this.clickCallback(this.x, this.y)
-        mapNode().recover()
+        //mapNode().recover()
     },
 
     recover(){
@@ -139,10 +139,13 @@ cc.Class({
         this.clickCallback = ()=>null
     },
 
-    update(dt) {
-        if(config.playAnimation) {
-            gameGlobals.animationPlayer.play({animationIcon:this.animation, animation2Icon: this.animation2, gridIcon:this.icon.node, x: this.x, y: this.y, iconUrl: this._iconUrl})
-        }
+    start() {
+        let self = this;
+        setInterval(()=> {
+            if(config.playAnimation) {
+                gameGlobals.animationPlayer.play({animationIcon:self.animation, animation2Icon: self.animation2, gridIcon:self.icon.node, x: self.x, y: self.y, iconUrl: self._iconUrl})
+            }
+        }, 16)
         
     }
 });
@@ -152,5 +155,6 @@ const { config } = require('../Globals');
 const gameGlobals = require('../battleMiddleWare/gameGlobals');
 //const { decoration } = require('../Globals');
 const { typeDict, mapNode, getPlayerIconUrl } = require('../battleMiddleWare/gameUtils');
+const { FrameTimer } = require('../otherComponents/frameTimer');
 const { initNode, root } = require('../otherComponents/uiUtils');
 const { Creature } = require('../xjfz-journey/classic-latest/main/Creature');

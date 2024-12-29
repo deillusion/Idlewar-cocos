@@ -1,4 +1,5 @@
-let journey = require("./assets/script/xjfz-journey").getRouter("classic-v0.0.2")
+
+let journey = require("./assets/script/xjfz-journey").getRouter("classic-latest")
 let game = journey.newGame()
 journey.updateGame(game, [
     "0000000lv000",

@@ -100,8 +100,8 @@ cc.Class({
         let coordinates = getCurrPlayer().challengeAbleItems
         let self = this
         this.map.getComponent('map').enableSelection(coordinates, function(x, y) {
-            makeOperation(`at${x}${y}`)
-            if(config.playAnimation) {
+            let success = makeOperation(`at${x}${y}`)
+            if(config.playAnimation && success) {
                 let player1Code = gameGlobals.currPLayerIndex
                 let player2Code = gameGlobals.gameObj.map[y][x].code
                 self.fightUI.getComponent('fightUI').init(player1Code, player2Code)

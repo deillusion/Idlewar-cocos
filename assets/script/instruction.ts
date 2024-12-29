@@ -295,6 +295,7 @@ export default class InstructionManager extends cc.Component {
         {
             scene: "gameMain",
             func: () => {
+                //updateInstructionProgress(999)
                 //updateInstructionProgress()
                 this.hideTouchInstruction()
                 this.showTextInstruction("瞧，我们现在来到了这片传说中的福地！我们要做的就是在这里尽可能多的提升自己的修为。", true)
@@ -828,4 +829,4 @@ function setJourneyInfo() {
         "results": 0
     }]
 }
-import {getRouter} from "./xjfz-journey/index"
+import {getRouter} from "./xjfz-journey"
